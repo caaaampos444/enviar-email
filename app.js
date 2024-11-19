@@ -5,8 +5,10 @@ const nodemailer = require('nodemailer');
 let transporter = nodemailer.createTransport({
     service: 'gmail', // Pode ser outro serviço como 'hotmail', 'yahoo', etc.
     auth: {
-        user: 'noreply.touccan@gmail.com', // Seu e-mail
-        pass: 'hsmx ibcb swga ggag'        // Sua senha de e-mail
+        //user: 'noreply.touccan@gmail.com', // email do noreply (pra recuperaçao de senha e etc)
+        user: 'contato.touccan@gmail.com',   // email do contato (pra enviar emails tipo reclamações)
+        //pass: 'hsmx ibcb swga ggag'        // senha do noreply
+        pass: 'snbt dqeb rnrj ossm'          // senha do contato
     }
 });
 
@@ -14,7 +16,7 @@ let transporter = nodemailer.createTransport({
 async function enviarEmail(destinatario, assunto, corpo) {
     try {
         let info = await transporter.sendMail({
-            from: '"Touccan" <noreply.touccan@gmail.com>', // Remetente
+            from: '"Touccan" <contato.touccan@gmail.com>', // Remetente
             to: destinatario,                              // Destinatário
             subject: assunto,                              // Assunto
             text: corpo                                    // Corpo do e-mail em texto simples
@@ -26,4 +28,4 @@ async function enviarEmail(destinatario, assunto, corpo) {
 }
 
 // Uso da função
-enviarEmail('gustavock18@gmail.com', 'Recuperação de Senha', 'Aqui está o seu código de recuperação: 123456');
+enviarEmail('contato.touccan@gmail.com', '<Nome de quem enviou a denuncia>', '<Conteúdo da denúncia>');
